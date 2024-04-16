@@ -1,9 +1,5 @@
 name: Round thing
 on:
-  push:
-    branches: [ main ]
-     
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -18,3 +14,8 @@ jobs:
         esp_idf_version: v5.2.1
         target: esp32c3
         path: '.'
+    - name: Copy firmware
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware
+        path: build/spi_lcd_touch.bin
